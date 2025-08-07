@@ -20,7 +20,7 @@ public class Inventory {
     private String productName;
 
     @Column
-    private String productCode;
+    private Integer productId;
 
     @Column
     private Integer quantity;

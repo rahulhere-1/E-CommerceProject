@@ -13,14 +13,22 @@ public class InventoryServiceImpl implements InventoryService {
     @Autowired
     private InventoryRepository repo;
 
-    public List<InventoryDTO> getInventoryListOfProducts(List<String> productCode){
-        List<Inventory> inv = repo.findAllByProductCode(productCode);
+    public List<InventoryDTO> getInventoryListOfProducts(List<Integer> productIdList){
+        List<Inventory> inv = repo.findAllByProductId(productIdList);
         return inv.stream().map( i -> {
                     InventoryDTO dto = new InventoryDTO();
-                    dto.setProductCode(i.getProductCode());
+                    dto.setProductId(i.getProductId());
                     dto.setProductName(i.getProductName());
                     dto.setQuantity(i.getQuantity());
                     return dto;
                 }).collect(Collectors.toList());
+    }
+
+    public Boolean isAllProductsAvailable(List<InventoryDTO> inventoryDTOList){
+        List<Integer> IdList = inventoryDTOList.stream().map( obj -> obj.getProductId()).collect(Collectors.toList());
+        List<Inventory> inv = repo.findAllByProductId(IdList);
+        if(!inv.isEmpty()){
+        }
+        return null;
     }
 }

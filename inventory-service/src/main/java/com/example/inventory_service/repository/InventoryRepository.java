@@ -11,5 +11,5 @@ import java.util.List;
 public interface InventoryRepository extends JpaRepository<Inventory,Long> {
 
     @Query( value = " FROM Inventory WHERE productCode IN ?1 ")
-    List<Inventory> findAllByProductCode(List<String> productCode);
+    List<Inventory> findAllByProductId(List<Integer> productCode);
 }
