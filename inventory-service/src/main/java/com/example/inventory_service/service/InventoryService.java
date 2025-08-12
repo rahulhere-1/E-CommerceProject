@@ -8,4 +8,6 @@ public interface InventoryService {
     Boolean isAllProductsAvailable(List<InventoryDTO> inventoryDTOList);
 
     Boolean isProductAvailabe(Long productId, Integer quantity);
+
+    void addProductsToWarehouse(List<InventoryDTO> inventoryDTOList);
 }

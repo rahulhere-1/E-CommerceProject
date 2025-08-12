@@ -7,9 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Map;
-import java.util.function.Function;
-import java.util.stream.Collectors;
 
 @Service
 public class InventoryServiceImpl implements InventoryService {
@@ -55,5 +52,16 @@ public class InventoryServiceImpl implements InventoryService {
             }
         }
         return false;
+    }
+
+    @Override
+    public void addProductsToWarehouse(List<InventoryDTO> inventoryDTOList){
+        for(InventoryDTO dto: inventoryDTOList){
+            Inventory inv = new Inventory();
+            inv.setProductId(dto.getProductId());
+            inv.setQuantity(dto.getQuantity());
+            inv.setProductName(dto.getProductName());
+            repo.save(inv);
+        }
     }
 }
