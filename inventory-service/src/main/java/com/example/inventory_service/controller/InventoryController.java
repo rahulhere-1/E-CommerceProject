@@ -21,7 +21,7 @@ public class InventoryController {
         return ResponseEntity.ok(response);
     }
 
-    @PostMapping
+    @PostMapping("/add-inventory")
     public ResponseEntity<String> addProductsToWarehouse(@RequestBody List<InventoryDTO> inventoryDTOList){
         inventoryService.addProductsToWarehouse(inventoryDTOList);
         return ResponseEntity.ok("added products to warehouse successfully...");
