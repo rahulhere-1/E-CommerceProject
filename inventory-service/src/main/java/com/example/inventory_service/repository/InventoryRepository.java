@@ -6,10 +6,13 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public interface InventoryRepository extends JpaRepository<Inventory,Long> {
 
     /*@Query( value = " FROM Inventory WHERE productCode IN ?1 ")
     List<Inventory> findAllByProductId(List<Long> productCode);*/
+
+    Optional<Inventory> findByProductId(Long productId);
 }

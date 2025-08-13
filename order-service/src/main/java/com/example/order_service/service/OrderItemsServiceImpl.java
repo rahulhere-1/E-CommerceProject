@@ -25,6 +25,7 @@ public class OrderItemsServiceImpl implements OrderItemsService {
     public OrderItemsDTO saveOrderItems(OrderItemsDTO orderItemsDTO){
         List<OrderDTO> orderDTOList = orderItemsDTO.getOrderDTOList();
         List<Order> orderList = new ArrayList<>();
+        OrderItems orderItems = new OrderItems();
         for(OrderDTO dto : orderDTOList){
             Boolean isThere = inventoryClient.isProductAvaiable(dto.getProductId(),dto.getQuantity());
             if(!isThere)
@@ -34,10 +35,10 @@ public class OrderItemsServiceImpl implements OrderItemsService {
             order.setProductName(dto.getProductName());
             order.setPrice(dto.getPrice());
             order.setQuantity(dto.getQuantity());
+            order.setOrderItems(orderItems);
             orderList.add(order);
         }
         if(!orderList.isEmpty()){
-            OrderItems orderItems = new OrderItems();
             orderItems.setOrderList(orderList);
             orderItems.setDeliveryDate(new Date());
             orderItemsRepository.save(orderItems);

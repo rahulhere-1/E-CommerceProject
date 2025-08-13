@@ -32,5 +32,4 @@ public class Order {
     @JoinColumn(name = "invoice_no")
     private OrderItems orderItems;
 
-
 }

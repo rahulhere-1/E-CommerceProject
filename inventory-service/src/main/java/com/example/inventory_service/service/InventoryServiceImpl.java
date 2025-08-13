@@ -44,7 +44,7 @@ public class InventoryServiceImpl implements InventoryService {
 
     @Override
     public Boolean isProductAvailabe(Long productId, Integer quantity){
-        Inventory inv = repo.findById(productId).orElse(null);
+        Inventory inv = repo.findByProductId(productId).orElse(null);
         if(inv!=null){
             Integer qt = inv.getQuantity();
             if(qt>=quantity){
