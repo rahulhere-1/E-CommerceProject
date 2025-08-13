@@ -20,7 +20,7 @@ public class OrderItems {
     @SequenceGenerator(name = "my_seq_gen", sequenceName = "my_sequence", initialValue = 123456789, allocationSize = 1)
     private long invoiceNumber;
 
-    @OneToMany(mappedBy = "orderItems", cascade = CascadeType.ALL)
+    @OneToMany( cascade = CascadeType.ALL)
     private List<Order> orderList;
 
     private Date deliveryDate;
